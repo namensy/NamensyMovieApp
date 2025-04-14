@@ -56,7 +56,7 @@ const App = () => {
         await updateSearchCount(query, data.results[0]);
       }
     } catch (error) {
-      setErrorMessage("Failed to fetch movies");
+      setErrorMessage("Failed to fetch movies", error);
     } finally {
       setIsLoading(false);
     }
@@ -103,7 +103,7 @@ const App = () => {
         ) : trendingError ? (
           <p>{trendingError}</p>
         ) : (
-          trendingMovies.length > 0 && (
+          trendingMovies && (
             <section className="trending">
               <h2>Trending Movies</h2>
               <ul>
